@@ -27,14 +27,14 @@ export class FormComponent implements OnInit {
 
   onSubmit(): void {
     // Configurar metodo para enviar request a API do google
-    let notification : INotification = {
+    let newNotification : INotification = {
       body: this.message,
       title: this.title
     }
 
     let data : IPushData = {
       to: "/topics/geral",
-      notification: notification
+      notification: newNotification
     }
 
     this._sendMessage.sendMessage(data).subscribe(data => console.log(data));

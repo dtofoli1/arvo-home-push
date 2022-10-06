@@ -32,7 +32,7 @@
       <p>Mensagem: {{message}}</p>
       <div>
         <button class="final-button" (click)="stepper.reset()" >Resetar</button>
-        <button class="final-button" (click)="stepper.reset(); onSubmit()" >Enviar</button>
+        <button class="final-button" (click)="onSubmit(); stepper.reset()" >Enviar</button>
       </div>
     </mat-step>
   </mat-stepper>
