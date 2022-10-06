@@ -1,0 +1,39 @@
+<div class="container">
+  <mat-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Insira um título para a mensagem</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Título</mat-label>
+          <input [(ngModel)]="title" matInput placeholder="Título da Mensagem" formControlName="firstCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Próximo</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="Insira a Mensagem">
+      <form [formGroup]="secondFormGroup">
+        <mat-form-field appearance="fill">
+          <mat-label>Mensagem</mat-label>
+          <input [(ngModel)]="message" matInput formControlName="secondCtrl" placeholder="Corpo da Mensagem"
+                required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Voltar</button>
+          <button mat-button matStepperNext>Finalizar</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Pronto</ng-template>
+      <p>Sua mensagem está pronta para ser enviada</p>
+      <p>Titúlo: {{title}}</p>
+      <p>Mensagem: {{message}}</p>
+      <div>
+        <button class="final-button" (click)="stepper.reset()" >Resetar</button>
+        <button class="final-button" (click)="stepper.reset(); onSubmit()" >Enviar</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>
